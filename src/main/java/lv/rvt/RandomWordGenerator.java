@@ -10,25 +10,27 @@ import java.util.Scanner;
 public class RandomWordGenerator {
     private static final String API_URL = "https://random-word-api.vercel.app/api?words=1&length=5";
 
-    public static void main(String[] args) {
+    public void start() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Press Enter to generate a new word. Type 'exit' to quit.");
+        System.out.println("Press Enter to generate a new word. Type 'exit' to return to the menu.");
 
         while (true) {
-            String input = scanner.nextLine();
+            String input = scanner  .nextLine();
             if (input.equalsIgnoreCase("exit")) {
                 break;
             }
             try {
                 String word = fetchRandomWord();
-                System.out.println(word);
+                String savedword = word;
+                System.out.println("Generated word hidden: " + word.replaceAll(".", "_"));
+                System.out.println("Generated word: " + savedword);
             } catch (IOException | InterruptedException e) {
                 System.out.println("Failed to fetch word: " + e.getMessage());
             }
         }
     }
 
-    private static String fetchRandomWord() throws IOException, InterruptedException {
+    private String fetchRandomWord() throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(API_URL))
