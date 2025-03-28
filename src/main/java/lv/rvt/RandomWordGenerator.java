@@ -15,7 +15,7 @@ public class RandomWordGenerator {
         System.out.println("Press Enter to generate a new word. Type 'exit' to return to the menu.");
 
         while (true) {
-            String input = scanner  .nextLine();
+            String input = scanner.nextLine();
             if (input.equalsIgnoreCase("exit")) {
                 break;
             }
