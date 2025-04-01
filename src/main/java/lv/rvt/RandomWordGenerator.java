@@ -23,7 +23,6 @@ public class RandomWordGenerator {
                 String word = fetchRandomWord();
                 String savedword = word;
                 System.out.println("Generated word hidden: " + word.replaceAll(".", "_"));
-                System.out.println("Generated word: " + savedword);
             } catch (IOException | InterruptedException e) {
                 System.out.println("Failed to fetch word: " + e.getMessage());
             }
