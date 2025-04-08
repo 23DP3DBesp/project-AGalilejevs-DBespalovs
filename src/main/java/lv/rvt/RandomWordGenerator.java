@@ -5,28 +5,12 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.Scanner;
 
 public class RandomWordGenerator {
     private static final String API_URL = "https://random-word-api.vercel.app/api?words=1&length=5";
 
-    public void start() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Press Enter to generate a new word. Type 'exit' to return to the menu.");
-
-        while (true) {
-            String input = scanner.nextLine();
-            if (input.equalsIgnoreCase("exit")) {
-                break;
-            }
-            try {
-                String word = fetchRandomWord();
-                String savedword = word;
-                System.out.println("Generated word hidden: " + word.replaceAll(".", "_"));
-            } catch (IOException | InterruptedException e) {
-                System.out.println("Failed to fetch word: " + e.getMessage());
-            }
-        }
+    public String getWord() throws IOException, InterruptedException {
+        return fetchRandomWord();
     }
 
     private String fetchRandomWord() throws IOException, InterruptedException {
